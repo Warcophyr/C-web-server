@@ -178,7 +178,7 @@ void send_file_html(int socket, char* html)
 void launch(struct Server *server)
 {
 
-    char buffer[30000];
+    //char buffer[30000];
     // char *hello = "HTTP/1.1 200 OK\nDate: Mon, 27 Jul 2009 12:28:53 GMT\nServer: Apache/2.2.14 (Win32)\nLast-Modified: Wed, 22 Jul 2009 19:15:56 GMT\nContent-Type: text/html\nConnection: Closed\n\n<html><body><h1>Hello,World!</h1></body></html>";
     // char *hello = "HTTP/1.1 200 OK\nConnection: Closed\n\n<html><body><h1>Hello,World!</h1></body></html>";
     // char *hello = "HTTP/1.1 200 OK\n\n<html><body><h1>Hello,World!</h1></body></html>";
@@ -188,7 +188,7 @@ void launch(struct Server *server)
     int i = 0;
     while(1)
     {
-        // char* buffer = (char*)malloc(30000*sizeof(char));
+        char* buffer = (char*)malloc(30000*sizeof(char));
         if(buffer == NULL)
         {
             perror("Allocation buffer fail...\n");
@@ -216,7 +216,7 @@ void launch(struct Server *server)
             }
         }
         close(new_socket);
-        // free(buffer);
+        free(buffer);
         i+=1;
     }
 }
